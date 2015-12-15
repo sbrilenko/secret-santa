@@ -76,21 +76,30 @@ class SiteController extends Controller
             for($i=0;$i<count($all);$i++){
                 $all_[]=$all[$i]->nameofagiver;
             }
-            $findcode=Players::findOne(['token'=>$post['player_code'],'whogift'=>0]);
+            $post['player_code']=trim($post['player_code']);
+            if(empty($post['player_code'])){
+                return json_encode(['error'=>'Код не может быть пустым']);
+            }
+            $findcode=Players::findOne(['token'=>$post['player_code']]);
             if($findcode){
-                $fdsfsdfsf=Yii::$app->ss->secretSanta($all_,Yii::$app->ss->conditions($findcode->nameofagiver));
-                $nameofagiver=Players::findOne(['nameofagiver'=>$fdsfsdfsf]);
-                if($nameofagiver){
-                    $findcode->whogift=$nameofagiver->id;
-                    $findcode->save();
+                if($findcode->whogift==0){
+                    $fdsfsdfsf=Yii::$app->ss->secretSanta($all_,Yii::$app->ss->conditions($findcode->nameofagiver));
+                    $nameofagiver=Players::findOne(['nameofagiver'=>$fdsfsdfsf]);
+                    if($nameofagiver){
+                        $findcode->whogift=$nameofagiver->id;
+                        $findcode->save();
 
-                    $nameofagiver->status=1;
-                    $nameofagiver->date=time();
-                    $nameofagiver->save();
+                        $nameofagiver->status=1;
+                        $nameofagiver->date=time();
+                        $nameofagiver->save();
+                    }
+                    return json_encode(['result'=>$fdsfsdfsf]);
                 }
-                return json_encode(['result'=>$fdsfsdfsf]);
+                else{
+                    return json_encode(['error'=>'Вы уже выбрали']);
+                }
             }else{
-                return json_encode(['error'=>'Вы уже выбрали']);
+                return json_encode(['error'=>'Код неверен']);
             }
         }
         else{

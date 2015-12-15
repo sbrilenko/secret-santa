@@ -3,7 +3,7 @@
 $this->title = 'All';
 ?>
 <div class="site-about">
-    <h1>Все тестера</h1>
+    <h1>Для тестера</h1>
     <table>
         <tr>
             <th>Имя участника</th>
