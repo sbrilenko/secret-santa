@@ -76,7 +76,7 @@ class SiteController extends Controller
             for($i=0;$i<count($all);$i++){
                 $all_[]=$all[$i]->nameofagiver;
             }
-            $findcode=Players::findOne(['token'=>$post['player_code'],'whogift'=>null]);
+            $findcode=Players::findOne(['token'=>$post['player_code'],'whogift'=>0]);
             if($findcode){
                 $fdsfsdfsf=Yii::$app->ss->secretSanta($all_,Yii::$app->ss->conditions($findcode->nameofagiver));
                 $nameofagiver=Players::findOne(['nameofagiver'=>$fdsfsdfsf]);

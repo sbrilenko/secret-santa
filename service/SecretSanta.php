@@ -11,11 +11,7 @@ namespace app\service;
 abstract class SecretSanta {
     function secretSanta($list,$condition){
         $l=array_diff($list, $condition);
-        if(count($l)>0){
-            $rand=array_rand($l);
-            return $l[$rand];
-        }else{
-            return $list;
-        }
+        $rand=array_rand($l);
+        return $l[$rand];
     }
 } 
