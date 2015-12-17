@@ -1,7 +1,7 @@
 /**
  * Created by secret on 12/13/15.
  */
-imageDir = "http://mvcreative.ru/example/6/2/snow/";
+imageDir = "http://secret-santa.ego-cms.com/image/snow/";
 sflakesMax = 65;
 sflakesMaxActive = 65;
 svMaxX = 2;
