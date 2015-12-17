@@ -7,7 +7,7 @@ function SnowStorm() {
     // PROPERTIES
     // ------------------
 
-    var imagePath = imageDir ? imageDir : 'http://mvcreative.ru/example/6/2/snow/'; // relative path to snow images (including trailing slash)
+    var imagePath = imageDir ? imageDir : 'http://secret-santa.ego-cms.com/image/snow/'; // relative path to snow images (including trailing slash)
     var flakesMax = sflakesMax ? sflakesMax : 32;
     var flakesMaxActive = sflakesMaxActive ? sflakesMaxActive : 32;
     var vMaxX = svMaxX ? svMaxX : 2;
