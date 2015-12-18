@@ -85,14 +85,14 @@ class SiteController extends Controller
         }
     }
 
-    public function actionAll()
-    {
-        $this->layout = 'next';
-        $finallrecords = Players::find()->all();
-        return $this->render('all',['ret'=>$finallrecords]);
-    }
+//    public function actionAll()
+//    {
+//        $this->layout = 'next';
+//        $finallrecords = Players::find()->all();
+//        return $this->render('all',['ret'=>$finallrecords]);
+//    }
 
-    public function actionRemoveall()
+    public function actionRemoveallforme()
     {
         Players::deleteAll();
         return $this->redirect('/index.php?r=site%2Fgeneratetokens');
