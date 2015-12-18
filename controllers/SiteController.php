@@ -29,24 +29,24 @@ class SiteController extends Controller
         return $this->render('index');
     }
 
-    public function actionGeneratetokens()
-    {
-        $alllist=Yii::$app->ss->getList();
-        for($i=0;$i<count($alllist);$i++){
-           /*lets find playesr*/
-            $finplayes = Players::find()
-                ->where(['nameofagiver' => $alllist[$i]])
-                ->all();
-           if(!$finplayes){
-               $player=new Players();
-               $player->nameofagiver=$alllist[$i];
-               $player->date=time();
-               $player->token=Players::generateToken();
-               $player->save();
-           }
-        }
-        return $this->redirect('/index.php?r=site%2Fall');
-    }
+//    public function actionGeneratetokens()
+//    {
+//        $alllist=Yii::$app->ss->getList();
+//        for($i=0;$i<count($alllist);$i++){
+//           /*lets find playesr*/
+//            $finplayes = Players::find()
+//                ->where(['nameofagiver' => $alllist[$i]])
+//                ->all();
+//           if(!$finplayes){
+//               $player=new Players();
+//               $player->nameofagiver=$alllist[$i];
+//               $player->date=time();
+//               $player->token=Players::generateToken();
+//               $player->save();
+//           }
+//        }
+//        return $this->redirect('/index.php?r=site%2Fall');
+//    }
     public function actionChooseplayer(){
         if (Yii::$app->request->post()){
             $post = Yii::$app->request->post();
@@ -92,9 +92,9 @@ class SiteController extends Controller
 //        return $this->render('all',['ret'=>$finallrecords]);
 //    }
 
-    public function actionRemoveallforme()
-    {
-        Players::deleteAll();
-        return $this->redirect('/index.php?r=site%2Fgeneratetokens');
-    }
+//    public function actionRemoveallforme()
+//    {
+//        Players::deleteAll();
+//        return $this->redirect('/index.php?r=site%2Fgeneratetokens');
+//    }
 }
